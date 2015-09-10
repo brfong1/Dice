@@ -1,35 +1,41 @@
-Die bob;
+Die suki; //dat japanese pun tho
 void setup()
 {
-  size(300, 300);
-  
+  size(300, 300); 
   noLoop();
 }
 void draw()
 {
   background(255);  
-  bob = new Die(10, 10);
-  bob.show();
+  for(int diceX; diceX <= 300; diceX = diceX + 50)
+  {
+    for(int diceY; diceY <= 300; diceY = diceY + 50)
+    {
+        suki = new Die(diceX, diceY);
+        suki.show();
+    }
+  }
 }
 void mousePressed() 
 {
   redraw();
 }
 
-class Die //models one single dice cube
+class Die
 {
-  int diceX, diceY, ellipseX, ellipseY, diceValue;
+  int diceX, diceY, ellipseX, ellipseY, diceValue; //instance
   Die(int x, int y) 
-  {
-    diceValue = (int)(Math.random()*4)+1; // add diceFour
-    diceX = x;
-    diceY = y;
-    //ellipseX = 
-    //ellipseY =
+  {         //constructor
+    diceValue = (int)(Math.random()*6)+1;
+    diceX = 10;
+    diceY = 10;
+    y = diceX;
+    x = diceY;
+
   }
   void roll()
   {
-    diceValue = (int)(Math.random()*4)+1;
+    diceValue = (int)(Math.random()*6)+1;
   }
   void show()
   {
@@ -45,18 +51,18 @@ class Die //models one single dice cube
     {
       diceThree();
     }
-    // if (diceValue == 4)
-    // {
-    //   diceFour();
-    // }
-    // if (diceValue == 5)
-    // {
-    //   diceFive();
-    // }
-    // if (diceValue == 6)
-    // {
-    //   diceSix();
-    // }
+    if (diceValue == 4)
+    {
+      diceFour();
+    }
+    if (diceValue == 5)
+    {
+      diceFive();
+    }
+    if (diceValue == 6)
+    {
+      diceSix();
+    }
   }
   void diceOne()
   {
@@ -64,7 +70,7 @@ class Die //models one single dice cube
     fill(255);
     rect(diceX, diceY, diceX + 30, diceY + 30, 5);
     fill(0);
-    ellipse(diceX + 20, diceY + 20, 10, 10);
+    ellipse(diceX + 20, diceY + 20, 7, 7);
   }
   void diceTwo()
   {
@@ -72,8 +78,8 @@ class Die //models one single dice cube
     fill(255);
     rect(diceX, diceY, diceX + 30, diceY + 30, 5);
     fill(0);
-    ellipse(diceX + 10, diceY + 10, 10, 10);
-    ellipse(diceX + 30, diceY + 30, 10, 10);
+    ellipse(diceX + 7, diceY + 7, 7, 7);
+    ellipse(diceX + 30, diceY + 30, 7, 7);
   }
   void diceThree()
   {
@@ -81,35 +87,44 @@ class Die //models one single dice cube
     fill(255);
     rect(diceX, diceY, diceX + 30, diceY + 30, 5);
     fill(0);
-    ellipse(diceX + 7, diceY + 7, 10, 10);
-    ellipse(diceX + 20, diceY + 20, 10, 10);
-    ellipse(diceX + 32, diceY + 32, 10, 10);
+    ellipse(diceX + 7, diceY + 7, 7, 7);
+    ellipse(diceX + 20, diceY + 20, 7, 7);
+    ellipse(diceX + 33, diceY + 33, 7, 7);
   }
-  // void diceFour()
-  // {
-  //   background(255);
-  //   fill(255);
-  //   rect(diceX, diceY, diceX + 30, diceY + 30, 5);
-  //   fill(0);
-  //   ellipse(diceX + 20, diceY + 20, 10, 10);
-  //   //ellipse 2,3,4
-  // }
-  // void diceFive()
-  // {
-  //   background(255);
-  //   fill(255);
-  //   rect(diceX, diceY, diceX + 30, diceY + 30, 5);
-  //   fill(0);
-  //   ellipse(diceX + 20, diceY + 20, 10, 10);
-  //   //ellipse 2,3,4,5
-  // }
-  // void diceSix()
-  // {
-  //   background(255);
-  //   fill(255);
-  //   rect(diceX, diceY, diceX + 30, diceY + 30, 5);
-  //   fill(0);
-  //   ellipse(diceX + 20, diceY + 20, 10, 10);
-  //   //ellipse 2,3,4,5,6
-  // }
+  void diceFour()
+  {
+    background(255);
+    fill(255);
+    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    fill(0);
+    ellipse(diceX + 7, diceY + 7, 7, 7);
+    ellipse(diceX + 33, diceY + 7, 7, 7);
+    ellipse(diceX + 33, diceY + 33, 7, 7);
+    ellipse(diceX + 7, diceY + 33, 7, 7);
+  }
+  void diceFive()
+  {
+    background(255);
+    fill(255);
+    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    fill(0);
+    ellipse(diceX + 20, diceY + 20, 7, 7);
+    ellipse(diceX + 7, diceY + 7, 7, 7);
+    ellipse(diceX + 33, diceY + 7, 7, 7);
+    ellipse(diceX + 33, diceY + 33, 7, 7);
+    ellipse(diceX + 7, diceY + 33, 7, 7);
+  }
+  void diceSix()
+  {
+    background(255);
+    fill(255);
+    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    fill(0);
+    ellipse(diceX + 7, diceY + 7, 7, 7);
+    ellipse(diceX + 33, diceY + 7, 7, 7);
+    ellipse(diceX + 7, diceY + 20, 7,7);
+    ellipse(diceX + 33, diceY + 20, 7, 7);
+    ellipse(diceX + 33, diceY + 33, 7, 7);
+    ellipse(diceX + 7, diceY + 33, 7, 7);
+  }
 }
