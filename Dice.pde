@@ -1,44 +1,52 @@
-Die suki; //dat japanese pun tho
+int total = 0;
+Die suki; 
+int diceValue = (int)(Math.random()*6)+1;
 void setup()
 {
-  size(300, 300); 
+  size(310, 330); 
   noLoop();
 }
 void draw()
 {
+
   background(255);  
-  for(int diceX; diceX <= 300; diceX = diceX + 50)
+  for(int diceX = 10; diceX <= 290; diceX = diceX + 50)
   {
-    for(int diceY; diceY <= 300; diceY = diceY + 50)
+    for(int diceY = 10; diceY <= 290; diceY = diceY + 50)
     {
-        suki = new Die(diceX, diceY);
+        Die suki = new Die(diceX, diceY);//instance
         suki.show();
+        suki.roll();
     }
   }
+    text("Total: "+ total, 155, 315);
+    textAlign(CENTER);
 }
 void mousePressed() 
 {
+  total = 0;
   redraw();
 }
 
+
+
 class Die
 {
-  int diceX, diceY, ellipseX, ellipseY, diceValue; //instance
+  int diceX, diceY, diceValue; 
   Die(int x, int y) 
   {         //constructor
     diceValue = (int)(Math.random()*6)+1;
-    diceX = 10;
-    diceY = 10;
-    y = diceX;
-    x = diceY;
-
+    diceX = x;
+    diceY = y;
   }
   void roll()
   {
     diceValue = (int)(Math.random()*6)+1;
+    total = total + diceValue;  //counter
   }
   void show()
   {
+    //
     if (diceValue == 1)
     {
       diceOne();
@@ -66,26 +74,25 @@ class Die
   }
   void diceOne()
   {
-    background(255);
     fill(255);
-    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    rect(diceX, diceY, 40, 40, 5);
     fill(0);
     ellipse(diceX + 20, diceY + 20, 7, 7);
   }
   void diceTwo()
   {
-    background(255);
+
     fill(255);
-    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    rect(diceX, diceY, 40, 40, 5);
     fill(0);
     ellipse(diceX + 7, diceY + 7, 7, 7);
-    ellipse(diceX + 30, diceY + 30, 7, 7);
+    ellipse(diceX + 33, diceY + 33, 7, 7);
   }
   void diceThree()
   {
-    background(255);
+
     fill(255);
-    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    rect(diceX, diceY,40, 40, 5);
     fill(0);
     ellipse(diceX + 7, diceY + 7, 7, 7);
     ellipse(diceX + 20, diceY + 20, 7, 7);
@@ -93,9 +100,9 @@ class Die
   }
   void diceFour()
   {
-    background(255);
+
     fill(255);
-    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    rect(diceX, diceY, 40, 40, 5);
     fill(0);
     ellipse(diceX + 7, diceY + 7, 7, 7);
     ellipse(diceX + 33, diceY + 7, 7, 7);
@@ -104,9 +111,9 @@ class Die
   }
   void diceFive()
   {
-    background(255);
+
     fill(255);
-    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    rect(diceX, diceY, 40, 40, 5);
     fill(0);
     ellipse(diceX + 20, diceY + 20, 7, 7);
     ellipse(diceX + 7, diceY + 7, 7, 7);
@@ -116,9 +123,9 @@ class Die
   }
   void diceSix()
   {
-    background(255);
+
     fill(255);
-    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    rect(diceX, diceY, 40, 40, 5);
     fill(0);
     ellipse(diceX + 7, diceY + 7, 7, 7);
     ellipse(diceX + 33, diceY + 7, 7, 7);

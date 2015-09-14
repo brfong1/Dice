@@ -14,45 +14,59 @@ import java.io.IOException;
 
 public class Dice extends PApplet {
 
-Die suki; //dat japanese pun tho
+int total = 0;
+Die suki; 
+int diceValue = (int)(Math.random()*6)+1;
 public void setup()
 {
-  size(300, 300); 
+  size(310, 330); 
   noLoop();
 }
 public void draw()
 {
+
   background(255);  
-  for(int diceX; diceX <= 300; diceX = diceX + 50)
+  for(int diceX = 10; diceX <= 290; diceX = diceX + 50)
   {
-    for(int diceY; diceY <= 300; diceY = diceY + 50)
+    for(int diceY = 10; diceY <= 290; diceY = diceY + 50)
     {
-        suki = new Die(diceX, diceY);
+        Die suki = new Die(diceX, diceY);//instance
         suki.show();
+        suki.roll();
     }
   }
+    text("Total: "+ total, 155, 315);
+    textAlign(CENTER);
 }
 public void mousePressed() 
 {
+  total = 0;
   redraw();
 }
 
+
+
 class Die
 {
-  int diceX, diceY, ellipseX, ellipseY, diceValue; //instance
+  int diceX, diceY, diceValue; 
   Die(int x, int y) 
   {         //constructor
-    diceValue = (int)(Math.random()*6)+1;
-    diceX = 10;
-    diceY = 10;
+    // diceValue = total;
+     diceValue = (int)(Math.random()*6)+1;
+    diceX = x;
+    diceY = y;
+    // y = diceX;
+    // x = diceY;
 
   }
   public void roll()
   {
     diceValue = (int)(Math.random()*6)+1;
+    total = total + diceValue;
   }
   public void show()
   {
+    //
     if (diceValue == 1)
     {
       diceOne();
@@ -80,26 +94,25 @@ class Die
   }
   public void diceOne()
   {
-    background(255);
     fill(255);
-    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    rect(diceX, diceY, 40, 40, 5);
     fill(0);
     ellipse(diceX + 20, diceY + 20, 7, 7);
   }
   public void diceTwo()
   {
-    background(255);
+
     fill(255);
-    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    rect(diceX, diceY, 40, 40, 5);
     fill(0);
     ellipse(diceX + 7, diceY + 7, 7, 7);
-    ellipse(diceX + 30, diceY + 30, 7, 7);
+    ellipse(diceX + 33, diceY + 33, 7, 7);
   }
   public void diceThree()
   {
-    background(255);
+
     fill(255);
-    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    rect(diceX, diceY,40, 40, 5);
     fill(0);
     ellipse(diceX + 7, diceY + 7, 7, 7);
     ellipse(diceX + 20, diceY + 20, 7, 7);
@@ -107,9 +120,9 @@ class Die
   }
   public void diceFour()
   {
-    background(255);
+
     fill(255);
-    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    rect(diceX, diceY, 40, 40, 5);
     fill(0);
     ellipse(diceX + 7, diceY + 7, 7, 7);
     ellipse(diceX + 33, diceY + 7, 7, 7);
@@ -118,9 +131,9 @@ class Die
   }
   public void diceFive()
   {
-    background(255);
+
     fill(255);
-    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    rect(diceX, diceY, 40, 40, 5);
     fill(0);
     ellipse(diceX + 20, diceY + 20, 7, 7);
     ellipse(diceX + 7, diceY + 7, 7, 7);
@@ -130,9 +143,9 @@ class Die
   }
   public void diceSix()
   {
-    background(255);
+
     fill(255);
-    rect(diceX, diceY, diceX + 30, diceY + 30, 5);
+    rect(diceX, diceY, 40, 40, 5);
     fill(0);
     ellipse(diceX + 7, diceY + 7, 7, 7);
     ellipse(diceX + 33, diceY + 7, 7, 7);
