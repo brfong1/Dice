@@ -28,8 +28,6 @@ void mousePressed()
   redraw();
 }
 
-
-
 class Die
 {
   int diceX, diceY, diceValue; 
